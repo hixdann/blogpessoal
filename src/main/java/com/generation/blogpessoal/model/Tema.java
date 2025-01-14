@@ -26,8 +26,8 @@ public class Tema {
 	@NotNull(message = "O atributo Descrição é obrigatório")
 	private String descricao;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tema", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("tema")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tema", cascade = CascadeType.REMOVE) // mappedBy seria como uma conexão com a outra tabela, por tanto similar a chave estrangeira... Ali nesse caso é informando que postagem está ligado a tema | aqui com cascade em cima informa que o que acontecer com uma tabela será refletido em outra, nesse caso, se o tema for excluido todas as postagens ligadas aquele tema também é exlcuido
+	@JsonIgnoreProperties("tema")         // aqui vamos informar para ignorar uma vez passado as informações, pois ai não ocorre um loop infinito             
 	private List<Postagem> postagem;
 
 	public Long getId() {
